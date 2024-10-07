@@ -1,0 +1,18 @@
+.buttonsContainer {
+    display: flex;
+}
+
+#display {
+    /* background-color: grey; */
+    border: 1px solid grey;
+    /* color: white; */
+    height: 50px;
+    text-align: right;
+    width: 200;
+}
+
+button {
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+}
