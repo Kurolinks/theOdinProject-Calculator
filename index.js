@@ -27,7 +27,7 @@ const operatorButtons = document.querySelectorAll('.operator');
 clear.addEventListener("click", clearScreen);
 equals.addEventListener("click", operate);
 
-let symbol;
+let symbol = null;
 let clickedNumber = '';
 let firstNumber = 0, secondNumber = 0, operationResult = 0;
 
@@ -36,13 +36,11 @@ function handleNumberClick(event) {
   // firstNumber = operationResult;
   const currentDisplay = event.target.textContent;
   clickedNumber += currentDisplay;
-
   display.innerHTML = clickedNumber;
   let number = parseFloat(clickedNumber);
   // alert(firstNumber)
-  if (firstNumber === 0) {
-    firstNumber = number;
-    // alert(firstNumber)
+  if (symbol === null) {
+    firstNumber += number;
   }
   else {
     secondNumber = number;
