@@ -1,64 +1,85 @@
 // funciton for the operations
 function operation(num1, operand, num2){
   if (symbol == "+"){
-    result = num1 + num2;
+    operationResult = num1 + num2;
   }
   else if (symbol == "-"){
-    result = num1 - num2;
+    operationResult = num1 - num2;
   }
   else if (symbol == "*"){
-    result = num1 * num2;
+    operationResult = num1 * num2;
   }
   else if (symbol == "/"){
-    result = num1 / num2;
+    operationResult = num1 / num2;
   }
 }
 
-const items = [];
-let symbol;
 
-// populate display when button is clicked
+
+// Query selectors for different button types
 const display = document.querySelector("#display");
 const clear = document.querySelector("#clear");
 const equals = document.querySelector(".equals");
+const numberButtons = document.querySelectorAll('.number');
+const operatorButtons = document.querySelectorAll('.operator');
+
 
 clear.addEventListener("click", clearScreen);
 equals.addEventListener("click", operate);
 
-function clearScreen(){
-    display.innerHTML = "";
-}
-
-
-// Query selectors for different button types
-const numberButtons = document.querySelectorAll('.number');
-const operatorButtons = document.querySelectorAll('.operator');
+let symbol;
+let clickedNumber = '';
+let firstNumber = 0, secondNumber = 0, operationResult = 0;
 
 // Function to handle number button clicks
 function handleNumberClick(event) {
-  let number = event.target.textContent;
-  display.innerHTML = number;
-  number = parseFloat(number);
-  items.push(number);
-  // alert(typeof(number))
+  // firstNumber = operationResult;
+  const currentDisplay = event.target.textContent;
+  clickedNumber += currentDisplay;
+
+  display.innerHTML = clickedNumber;
+  let number = parseFloat(clickedNumber);
+  // alert(firstNumber)
+  if (firstNumber === 0) {
+    firstNumber = number;
+    // alert(firstNumber)
+  }
+  else {
+    secondNumber = number;
+    // clickedNumber += currentDisplay;
+  }
 }
 
 // Function to handle operator button clicks
 function handleOperatorClick(event) {
+  const currentDisplay = event.target.textContent;
   const operator = event.target.textContent;
-  display.innerHTML = operator;
+  let clickedOperator = currentDisplay;
+  display.innerHTML = clickedOperator;
   symbol = operator;
+  clickedNumber = '';
 }
+
+function clearScreen(event){
+  // display.innerHTML = "";
+  clickedNumber = 0;
+  display.innerHTML = clickedNumber;
+}
+
+numberButtons.forEach(button => {
+  button.addEventListener('click', handleNumberClick);
+});
+
 
 // perform the operation when equals sign is clicked
 function operate(event) {
-  let number = event.target.textContent;
-  display.innerHTML = number;
-  let first = items[0];
-  let second = items[1];
-  operation(first, symbol, second);
-  display.innerHTML = (`${first} ${symbol} ${second} = ${result}`);
-  items.splice(0, items.length);
+  // let number = event.target.textContent;
+  // display.innerHTML = number;
+  // alert(firstNumber);
+  // alert(symbol);
+  // alert(secondNumber);
+  operation(firstNumber, symbol, secondNumber);
+  display.innerHTML = (`${firstNumber} ${symbol} ${secondNumber} = ${operationResult}`);
 }
 
 equals.addEventListener('click', operate);

@@ -1,10 +1,16 @@
+body {
+    background-color: gray;
+}
+
 .buttonsContainer {
     display: flex;
 }
 
 #display {
     /* background-color: grey; */
-    border: 1px solid grey;
+    border: 1px solid black;
+    color: white;
+    font-size: 20px;
     height: 50px;
     text-align: right;
     width: 200;
