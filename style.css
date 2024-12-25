@@ -1,23 +1,61 @@
 body {
-    background-color: gray;
+    align-items: center;
+    background-color: wheat;
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
-.buttonsContainer {
-    display: flex;
+.container {
+    background-color: gray;
+    border:  5px solid black;
+    width: 425px;
 }
 
 #display {
     /* background-color: grey; */
-    border: 1px solid black;
+    border: 3px solid black;
     color: white;
     font-size: 20px;
     height: 50px;
+    margin: 5px;
     text-align: right;
-    width: 200;
+}
+
+.buttonsContainer {
+    margin: 5px;
 }
 
 button {
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 30px;
     height: 50px;
+    padding: 0;
+    margin: 0;
     width: 100px;
+}
+
+.number,
+.dot {
+    background-color: #7E99A3;
+}
+
+.zero,
+#clear {
+    width: 204px;
+}
+
+.operator,
+.equals {
+    background-color: #FFE2E2;
+}
+
+.backspace {
+    background-color: #FFE2E2;
+    font-size: 20px;
+    color: red;
 }

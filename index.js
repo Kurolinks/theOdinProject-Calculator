@@ -23,10 +23,12 @@ const clear = document.querySelector("#clear");
 const equals = document.querySelector(".equals");
 const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
+const backspace = document.querySelector(".backspace");
 
 // Event listeners for clear and equals buttons
 clear.addEventListener("click", clearScreen);
 equals.addEventListener("click", operate);
+backspace.addEventListener('click', handlebackspace);
 
 let symbol = null, clickedNumber = '';
 let firstNumber = 0, secondNumber = 0, operationResult = 0;
@@ -64,6 +66,19 @@ function clearScreen(){
   display.innerHTML = clickedNumber;
 }
 
+function handlebackspace(){
+  if (!symbol) {
+    firstNumber = firstNumber.slice(0, -1);
+    alert(firstNumber)
+    alert("here")
+    display.innerHTML = firstNumber;
+  }
+  else {
+    secondNumber = secondNumber.slice(0, -1);
+    display.innerHTML = secondNumber;
+  }
+}
+
 numberButtons.forEach(button => {
   button.addEventListener('click', handleNumberClick);
 });
@@ -89,12 +104,11 @@ function operate() {
   }
 }
 
-equals.addEventListener('click', operate);
-
 // Adding event listeners to number buttons
 numberButtons.forEach(button => {
   button.addEventListener('click', handleNumberClick);
 });
+
 
 // Adding event listeners to operator buttons
 operatorButtons.forEach(button => {
