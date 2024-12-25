@@ -40,16 +40,21 @@ function handleNumberClick(event) {
   let number = parseFloat(clickedNumber);
   // alert(firstNumber)
   if (symbol === null) {
-    firstNumber += number;
+    firstNumber = number;
   }
   else {
     secondNumber = number;
-    // clickedNumber += currentDisplay;
   }
 }
 
 // Function to handle operator button clicks
 function handleOperatorClick(event) {
+  if (firstNumber && secondNumber) {
+    operation(firstNumber, symbol, secondNumber);
+    firstNumber = operationResult;
+    alert(operationResult);
+    display.innerHTML = (`${operationResult}`);
+  }
   const currentDisplay = event.target.textContent;
   const operator = event.target.textContent;
   let clickedOperator = currentDisplay;
@@ -78,6 +83,7 @@ function operate(event) {
   // alert(secondNumber);
   operation(firstNumber, symbol, secondNumber);
   display.innerHTML = (`${firstNumber} ${symbol} ${secondNumber} = ${operationResult}`);
+  firstNumber = operationResult;
 }
 
 equals.addEventListener('click', operate);
