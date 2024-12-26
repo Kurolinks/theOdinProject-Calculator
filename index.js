@@ -25,6 +25,7 @@ const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const backspace = document.querySelector(".backspace");
 
+
 // Event listeners for clear and equals buttons
 clear.addEventListener("click", clearScreen);
 equals.addEventListener("click", operate);
@@ -60,21 +61,20 @@ function handleOperatorClick(event) {
   clickedNumber = '';
 }
 
+// clear screeen function
 function clearScreen(){
-  // display.innerHTML = "";
   clickedNumber = 0;
   display.innerHTML = clickedNumber;
 }
 
+// backspace function
 function handlebackspace(){
   if (!symbol) {
-    firstNumber = firstNumber.slice(0, -1);
-    alert(firstNumber)
-    alert("here")
+    firstNumber = parseFloat(display.innerHTML.slice(0, -1));
     display.innerHTML = firstNumber;
   }
   else {
-    secondNumber = secondNumber.slice(0, -1);
+    secondNumber = parseFloat(display.innerHTML.slice(0, -1));
     display.innerHTML = secondNumber;
   }
 }
