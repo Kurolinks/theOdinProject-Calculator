@@ -24,12 +24,14 @@ const equals = document.querySelector(".equals");
 const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const backspace = document.querySelector(".backspace");
+const dot = document.querySelector(".dot");
 
 
 // Event listeners for clear and equals buttons
 clear.addEventListener("click", clearScreen);
 equals.addEventListener("click", operate);
 backspace.addEventListener('click', handlebackspace);
+dot.addEventListener('click', handleDot);
 
 let symbol = null, clickedNumber = '';
 let firstNumber = 0, secondNumber = 0, operationResult = 0;
@@ -61,9 +63,30 @@ function handleOperatorClick(event) {
   clickedNumber = '';
 }
 
+function handleDot(event) {
+  
+  const currentDisplay = event.target.textContent;
+  display.innerHTML = clickedNumber;
+  
+  const lastDotIndex = clickedNumber.lastIndexOf('.'); // Find the last occurrence of a dot
+  const lastOperatorIndex = Math.max(
+      clickedNumber.lastIndexOf('+'),
+      clickedNumber.lastIndexOf('-'),
+      clickedNumber.lastIndexOf('*'),
+      clickedNumber.lastIndexOf('/')
+  );
+  // Append the dot if no dot exists in the current number
+  if (lastDotIndex < lastOperatorIndex || lastDotIndex === -1) {
+      clickedNumber += '.';
+      secondNumber = "";
+  }
+}
+
+
 // clear screeen function
 function clearScreen(){
   clickedNumber = 0;
+  // display.value = '';
   display.innerHTML = clickedNumber;
 }
 
