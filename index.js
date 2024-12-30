@@ -85,9 +85,12 @@ function handleDot(event) {
 
 // clear screeen function
 function clearScreen(){
-  clickedNumber = 0;
-  // display.value = '';
+  clickedNumber = "";
   display.innerHTML = clickedNumber;
+  symbol = null;
+  firstNumber = 0;
+  secondNumber = 0,
+  operationResult = 0;
 }
 
 // backspace function
@@ -111,9 +114,9 @@ numberButtons.forEach(button => {
 function operate() {
   if (secondNumber === 0) {
     if (!symbol) {
-      display.innerHTML = "ERROR!";
+      display.innerHTML = "Start Again!";
     }
-    else if (symbol === '/') {
+    if (symbol === '/') {
       display.innerHTML = "THINK AGAIN!";
     }
     else {
@@ -123,8 +126,9 @@ function operate() {
   else {
     operation(firstNumber, symbol, secondNumber);
     display.innerHTML = (`${firstNumber} ${symbol} ${secondNumber} = ${operationResult}`);
-    firstNumber = operationResult;
+    secondNumber = 0;
   }
+  symbol = null;
 }
 
 // Adding event listeners to number buttons
