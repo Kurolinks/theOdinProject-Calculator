@@ -129,6 +129,7 @@ function operate() {
     secondNumber = 0;
   }
   symbol = null;
+  clickedNumber = "";
 }
 
 // Adding event listeners to number buttons
