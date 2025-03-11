@@ -127,6 +127,7 @@ function operate() {
     operation(firstNumber, symbol, secondNumber);
     display.innerHTML = (`${firstNumber} ${symbol} ${secondNumber} = ${operationResult}`);
     secondNumber = 0;
+    firstNumber = operationResult;
   }
   symbol = null;
   clickedNumber = "";
